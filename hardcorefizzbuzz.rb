@@ -1,5 +1,4 @@
-LIST_OF_DIVISORS = [3, 5, 7, 9]
-LIST_OF_TERMS = { 3 => "Fizz", 5 => "Buzz", 7 => "Sivv", 9 => "Narr" }
+LIST_OF_DIVISORS = { 3 => "Fizz", 5 => "Buzz", 7 => "Sivv", 9 => "Narr" }
 
   def fizzbuzz(*nums)
     nums.each do |num|
@@ -10,10 +9,10 @@ LIST_OF_TERMS = { 3 => "Fizz", 5 => "Buzz", 7 => "Sivv", 9 => "Narr" }
 
   def check_divisors(num)
     end_result = ""
-    LIST_OF_DIVISORS.each do |divisor|
+    LIST_OF_DIVISORS.each do |divisor, term|
       result = num % divisor
       if result == 0
-        end_result += LIST_OF_TERMS[divisor]
+        end_result += term
       end
     end
     if end_result.empty?
