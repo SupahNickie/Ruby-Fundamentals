@@ -13,4 +13,4 @@ Limitations of FizzBuzz v 1.0
 FizzBuzz v 2.0
 ==============
 
-hardcorefizzbuzz.rb solves both of those major issues. In it an easily managed list of divisors is used in a "check divisors" method used to iterate over a splat argument for the main method itself, allowing a check of any amount of numbers to check division against as well as an easy way to add in any divisors the user would want. While some small amount of coding is required to add in any divisors, even the most novice of programmers could extrapolate how to add in a divisor and its associated return key in the first two lines of the FizzBuzz code.
+hardcorefizzbuzz.rb solves both of those major issues. In it an easily managed list of divisors is used in a "check divisors" method used to iterate over a splat argument for the main method itself, allowing a check of any amount of numbers to check division against as well as an easy way to add in any divisors the user would want. While some small amount of coding is required to add in any divisors, even the most novice of programmers could extrapolate how to add in a divisor and its associated return key in the first line of the FizzBuzz code.

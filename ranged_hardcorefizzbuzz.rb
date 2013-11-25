@@ -24,15 +24,3 @@ LIST_OF_DIVISORS = { 3 => "Fizz", 5 => "Buzz", 7 => "Sivv", 9 => "Narr" }
 
 fizzbuzz(1200..1400)
 
-# 1
-# 2
-# Fizz
-# 4
-# Buzz
-# Fizz
-# Sivv
-# FizzBuzz
-# BuzzSivv
-# FizzBuzzNarr
-# FizzBuzzSivv
-# FizzBuzzSivvNarr
