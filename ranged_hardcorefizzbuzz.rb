@@ -1,6 +1,6 @@
 LIST_OF_DIVISORS = { 3 => "Fizz", 5 => "Buzz", 7 => "Sivv", 9 => "Narr" }
 
-  def fizzbuzz(*nums)
+  def fizzbuzz(nums)
     nums.each do |num|
       fizz_check = check_divisors(num)
       puts fizz_check
@@ -22,7 +22,7 @@ LIST_OF_DIVISORS = { 3 => "Fizz", 5 => "Buzz", 7 => "Sivv", 9 => "Narr" }
     end
   end
 
-fizzbuzz(1, 2, 3, 4, 5, 6, 7, 15, 35, 90, 105, 945)
+fizzbuzz(1200..1400)
 
 # 1
 # 2
