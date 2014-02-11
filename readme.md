@@ -4,7 +4,7 @@ This repository originally started off as an assignment through Code Fellows to 
 
 Cracking the Coding Interview Questions
 =======================================
-Written by Gayle Laakmann, Cracking the Coding Interview presents technical interview style questions (with solutions in the back written in Java) covering the fundamentals of computer science. I began going through and answering the questions in Ruby, which are presented in this repo with somewhat description method names to help those who do not have the book to see what the methods are trying to accomplish.
+Written by Gayle Laakmann, Cracking the Coding Interview (this file based on the 4th edition) presents technical interview style questions (with solutions in the back written in Java) covering the fundamentals of computer science. I began going through and answering the questions in Ruby, which are presented in this repo with somewhat description method names to help those who do not have the book to see what the methods are trying to accomplish.
 
 Merge Sort
 ==========
