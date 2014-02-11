@@ -227,7 +227,7 @@ class Call
         elsif employee.type == "tl"
           @handler = employee.name
           break
-        else # PM
+        else # employee.type == "pm"
           @handler = employee.name
         end
       else
