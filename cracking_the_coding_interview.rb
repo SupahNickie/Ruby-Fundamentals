@@ -1,3 +1,19 @@
+# AGE HISTOGRAM CHALLENGE FROM IVAN
+
+array = Array.new
+1250.times { array << rand(0..130) }
+
+def age_histogram(array)
+  totals = Array.new(131, 0)
+  array.sort.each do |age|
+    totals[age] += 1
+  end
+  print totals
+  puts ""
+end
+
+age_histogram(array)
+
 # A TO I METHOD (WORD TO INTEGER) FROM HACKING THE GOOGLE INTERVIEW
 
 def atoi(word)
@@ -9,6 +25,7 @@ def atoi(word)
   results.each do |integer|
     print integer
   end
+  puts ""
 end
 
 def change_letter(letter)
