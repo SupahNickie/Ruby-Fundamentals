@@ -1,4 +1,4 @@
-# A TO I METHOD (WORD TO INTEGER)
+# A TO I METHOD (WORD TO INTEGER) FROM HACKING THE GOOGLE INTERVIEW
 
 def atoi(word)
   results = []
@@ -181,3 +181,69 @@ deck2 = Deck.new("pinochle")
 deck1.list_cards
 deck2.shuffle(3)
 deck2.list_cards
+
+# 7.2
+
+class Office
+  attr_accessor :freshers, :tl, :pm, :employees
+  def initialize(tl, pm, freshers = [])
+    @freshers = freshers
+    @tl = tl
+    @pm = pm
+    @employees = [@freshers, @tl, @pm]
+  end
+
+  def add_fresher_to_office(name)
+    Employee.new("freshers", name).assign_fresher_to_office(self)
+  end
+end
+
+class Employee
+  attr_accessor :type, :name, :engaged
+  def initialize(type, name, engaged = false)
+    @type = type
+    @name = name
+    @engaged = engaged
+  end
+
+  def assign_fresher_to_office(office)
+    office.freshers << self
+  end
+end
+
+class Call
+  attr_accessor :subject, :handler
+  def initialize(subject, handler = nil)
+    @subject = subject
+    @handler = handler
+  end
+
+  def get_call_handler(office)
+    office.employees.flatten.each do |employee|
+      if employee.engaged == false
+        if employee.type == "freshers"
+          @handler = employee.name
+          break
+        elsif employee.type == "tl"
+          @handler = employee.name
+          break
+        else # PM
+          @handler = employee.name
+        end
+      else
+        @handler = "on hold"
+      end
+    end
+  end
+end
+
+bill = Employee.new("tech lead", "Bill")
+steve = Employee.new("project manager", "Steve")
+joe = Employee.new("freshers", "Joe", true)
+office = Office.new(bill, steve)
+joe.assign_fresher_to_office(office)
+office.add_fresher_to_office("Stewart")
+office.employees.flatten.collect { |employee| puts employee.name }
+test_call = Call.new("tech support")
+test_call.get_call_handler(office)
+puts test_call.handler
