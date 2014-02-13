@@ -349,3 +349,23 @@ end
 
 puts nth_recursive_fibonacci(5)
 puts nth_recursive_fibonacci(20)
+
+# SORTING AND SEARCHING
+
+9.1
+
+def two_sorted(a, b)
+  a.each_with_index do |num, index|
+    unless b.empty?
+      if b.first < num
+        a.insert(index, b.shift)
+      elsif b.first > a.last
+        a << b.shift
+      end
+    end
+  end
+  return a
+end
+
+print two_sorted([4, 10, 13, 24], [5, 16, 90])
+puts ""
