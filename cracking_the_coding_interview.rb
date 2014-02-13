@@ -326,24 +326,25 @@ end
 
 8.1
 
-def nth_fibonacci_number(n)
+def nth_iterative_fibonacci(n)
   start = 0
   iter_start = 1
+  sum = 0
   (n - 1).times do
     sum = start + iter_start
     start = iter_start
     iter_start = sum
   end
-  puts sum
+  return sum
 end
 
-nth_iterative_fibonacci(5)
-nth_iterative_fibonacci(20)
+puts nth_iterative_fibonacci(5)
+puts nth_iterative_fibonacci(20)
 
 def nth_recursive_fibonacci(n)
   return 0 if n == 0
   return 1 if n == 1
-  fibonacci(n - 1) + fibonacci(n - 2)
+  nth_recursive_fibonacci(n - 1) + nth_recursive_fibonacci(n - 2)
 end
 
 puts nth_recursive_fibonacci(5)
