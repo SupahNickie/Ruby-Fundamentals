@@ -324,7 +324,7 @@ end
 
 # RECURSION
 
-8.1
+# 8.1
 
 def nth_iterative_fibonacci(n)
   start = 0
@@ -352,7 +352,7 @@ puts nth_recursive_fibonacci(20)
 
 # SORTING AND SEARCHING
 
-9.1
+# 9.1
 
 def two_sorted(a, b)
   a.each_with_index do |num, index|
