@@ -392,24 +392,24 @@ puts ""
 
 # 9.2
 
-array = ["socks", "cinema", "stare", "brigade", "iceman", "time", "rates"]
+array = ["socks", "cinema", "stare", "cemian", "cokss", "brigade", "tares", "iceman", "time", "rbiagde", "rates", "maniec"]
 
 def anagram_sort(array)
   new_array = Array.new
   array.each do |word|
     index = 0
     while index < array.size
-    comparator = array[index]
-      unless word == comparator
-        if word.chars.sort == comparator.chars.sort
-          new_array << word && new_array << comparator
-          array.delete(word) && array.delete(comparator)
-        end
+      comparator = array[index]
+      if word.chars.sort == comparator.chars.sort
+        new_array << comparator
+        array.delete(comparator)
       end
       index += 1
+      new_array << word
+      array.delete(word)
     end
   end
-  new_array.uniq + array
+  return new_array.uniq + array
 end
 
 puts anagram_sort(array)
