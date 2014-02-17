@@ -134,6 +134,26 @@ end
 
 swap_even_odds(4234052123450)
 
+# BRAIN TEASERS
+
+# 6.1
+
+"3 1 3 6 = 8
+(3+1)/(3/6) = 8"
+
+# 6.3
+
+"5 gallons and 3 gallons = 4 gallons
+
+5 > 3, dump 3 gallons out
+5(2 inside) > 3; 5 is empty, 3 gallon has 2 inside
+5(fill up) > 3(2 inside); 5 gallons has 4 gallons inside"
+
+# 6.5
+
+"Drop the egg from the 10th floor, then the 20th floor and so on until it breaks, which will leave you with 9 additional floors to try.
+The most amount of drops in the worst case scenario is on the 99th floor, which is 10 drops plus 9 more to find the individual floor."
+
 # OBJECT ORIENTED DESIGN
 
 # 7.1
@@ -369,3 +389,27 @@ end
 
 print two_sorted([4, 10, 13, 24], [5, 16, 90])
 puts ""
+
+# 9.2
+
+array = ["socks", "cinema", "stare", "brigade", "iceman", "time", "rates"]
+
+def anagram_sort(array)
+  new_array = Array.new
+  array.each do |word|
+    index = 0
+    while index < array.size
+    comparator = array[index]
+      unless word == comparator
+        if word.chars.sort == comparator.chars.sort
+          new_array << word && new_array << comparator
+          array.delete(word) && array.delete(comparator)
+        end
+      end
+      index += 1
+    end
+  end
+  new_array.uniq + array
+end
+
+puts anagram_sort(array)
