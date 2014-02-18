@@ -14,6 +14,31 @@ end
 
 age_histogram(array)
 
+# BINARY SEARCH ALGORITHM
+
+array = Array.new
+999.times { array << rand(0..1000) }
+
+def binary_search(array, value)
+  index = (array.size/2).round
+  first = array.slice(0, index)
+  second = array.slice(index, array.size)
+  if array.include?(value)
+    if array[index] == value
+      return "#{value} is at index #{index}"
+    elsif array[index] > value
+      binary_search(first, value)
+    elsif array[index] < value
+      binary_search(second, value)
+    end
+  else
+    return "Element is not in the array!"
+  end
+end
+
+array.sort!
+puts binary_search(array, 79)
+
 # A TO I METHOD (WORD TO INTEGER) FROM HACKING THE GOOGLE INTERVIEW
 
 def atoi(word)
@@ -188,6 +213,27 @@ class LinkedList
     node.data = nil
     @stores.delete(node)
   end
+
+  def remove_duplicates
+    counter = @head
+    position = 1
+    instances = Hash.new
+    instances.default = 0
+    until counter.nil?
+      instances[counter.data] += 1
+      if instances[counter.data] > 1
+        self.delete(position)
+        instances = Hash.new
+        instances.default = 0
+        counter = @head
+        position = 1
+      else
+        counter = counter.after
+        position += 1
+      end
+    end
+  end
+
 end
 
 class Node
@@ -219,12 +265,14 @@ list.append(node7)
 list.append(node8)
 list.append(node9)
 list.list_stores
-puts "GETTING RID OF DATA"
 list.search(3)
 list.delete(1)
 list.delete(1)
 list.delete(2)
 list.delete(list.stores.size)
+list.list_stores
+puts "GETTING RID OF DATA"
+list.remove_duplicates
 list.list_stores
 
 # BIT MANIPULATION
