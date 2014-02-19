@@ -535,6 +535,21 @@ end
 puts nth_recursive_fibonacci(5)
 puts nth_recursive_fibonacci(20)
 
+# 8.4
+
+def permutations(string)
+  return [string] if string.size == 1
+  array = Array.new
+  (0..(string.size - 1)).each do |n|
+    rest = string.chars
+    picked = rest.delete_at(n)
+    permutations(rest.join).each { |x| array << picked + x }
+  end
+  array
+end
+
+puts permutations("cute")
+
 # SORTING AND SEARCHING
 
 # 9.1
