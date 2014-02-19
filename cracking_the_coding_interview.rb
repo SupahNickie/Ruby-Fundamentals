@@ -23,21 +23,19 @@ def binary_search(array, value)
   index = (array.size/2).round
   first = array.slice(0, index)
   second = array.slice(index, array.size)
-  if array.include?(value)
-    if array[index] == value
-      return "#{value} is at index #{index}"
-    elsif array[index] > value
-      binary_search(first, value)
-    elsif array[index] < value
-      binary_search(second, value)
-    end
+  if array[index] == value
+    return "#{value} has been found in the array"
+  elsif array[index] > value
+    binary_search(first, value)
+  elsif array[index] < value
+    binary_search(second, value)
   else
     return "Element is not in the array!"
   end
 end
 
 array.sort!
-puts binary_search(array, 79)
+puts binary_search(array, 634)
 
 # A TO I METHOD (WORD TO INTEGER) FROM HACKING THE GOOGLE INTERVIEW
 
