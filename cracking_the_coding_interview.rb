@@ -1,3 +1,24 @@
+# REVERSE STRING WITHOUT CALLING REVERSE
+
+def reverse_string(string)
+  return string if string.size == 1
+  array_string = string.chars
+  index1 = 0
+  index2 = (array_string.size - 1)
+  until index1 >= index2
+    array_string[index1], array_string[index2] = array_string[index2], array_string[index1]
+    index1 += 1
+    index2 -= 1
+  end
+  return array_string.join
+end
+
+puts reverse_string("fiver")
+puts reverse_string("cake")
+puts reverse_string("Nicholas Case is the super best")
+puts reverse_string("SOYLENT GREEN IS PEOPLE!")
+puts reverse_string("I")
+
 # AGE HISTOGRAM CHALLENGE FROM IVAN
 
 array = Array.new
