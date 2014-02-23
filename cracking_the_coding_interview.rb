@@ -1,3 +1,22 @@
+# MICROSOFT INTERVIEW QUESTION: FIND EXTRA STRING
+
+a = ['aardvark', 'onyx', 'zebra','dog', 'cat', 'monkey']
+b = ['cat', 'dog', 'aardvark', 'zebra', 'monkey']
+
+def find_extra_string(a, b)
+  hash = Hash.new
+  hash.default = 0
+  a.each do |word|
+    hash[word.to_sym] += 1
+  end
+  b.each do |word|
+    hash[word.to_sym] += 1
+  end
+  hash.sort_by {|k, v| v }.first
+end
+
+puts find_extra_string(a, b)
+
 # REVERSE STRING WITHOUT CALLING REVERSE
 
 def reverse_string(string)
