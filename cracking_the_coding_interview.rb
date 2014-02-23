@@ -1,17 +1,13 @@
 # YELP INTERVIEW QUESTION: PRINT ALL UPCASE, DOWNCASE PERMUTATIONS OF STRING
 
 def upcase_downcase_perms(string)
-  if string.length == 1
-    return Array.new([string.downcase, string.upcase])
-  else 
-    rest = string.chars
-    head = rest.delete_at(0)
-    tail = rest.join
-    recursive_call = upcase_downcase_perms(tail)
-    d = recursive_call.collect{ |p| head.downcase + p }
-    u = recursive_call.collect{ |p| head.upcase + p }
-    return (d + u).uniq 
-  end  
+  return [string.downcase, string.upcase] if string.size == 1
+  head = string[0]
+  tail = string[1..-1]
+  sub = upcase_downcase_perms(tail)
+  a = sub.collect { |x| head.upcase + x }
+  b = sub.collect { |x| head.downcase + x }
+  (a + b).uniq
 end
 
 puts upcase_downcase_perms('abcdefg')
