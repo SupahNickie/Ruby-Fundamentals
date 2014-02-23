@@ -601,16 +601,16 @@ def anagram_sort(array)
     index = 0
     while index < array.size
       comparator = array[index]
-      if word.chars.sort == comparator.chars.sort
+      if (word != comparator) && (word.chars.sort == comparator.chars.sort)
         new_array << comparator
         array.delete(comparator)
       end
       index += 1
-      new_array << word
-      array.delete(word)
     end
+    new_array << word
+    array.delete(word)
   end
-  return new_array.uniq + array
+  return new_array + array
 end
 
 puts anagram_sort(array)
