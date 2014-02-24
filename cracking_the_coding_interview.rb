@@ -626,6 +626,8 @@ puts ""
 
 # 9.2
 
+# O(n^2) RUNTIME, ONE ITERATION OF ARRAY PER WORD
+
 array = ["socks", "cinema", "stare", "cemian", "cokss", "brigade", "tares", "iceman", "time", "rbiagde", "rates", "maniec"]
 
 def anagram_sort(array)
@@ -647,3 +649,22 @@ def anagram_sort(array)
 end
 
 puts anagram_sort(array)
+
+# O(n) RUNTIME, ONE ITERATION THROUGH ARRAY
+
+array = ["socks", "cinema", "stare", "cemian", "cokss", "brigade", "tares", "iceman", "time", "rbiagde", "rates", "maniec"]
+
+def better_anagram_sort(array)
+  hash = {}
+  array.each do |string|
+    sorted = string.chars.sort.join.to_sym
+    if hash[sorted].nil?
+      hash[sorted] = [string]
+    else
+      hash[sorted] << string
+    end
+  end
+  hash.each { |k,v| puts v }
+end
+
+better_anagram_sort(array)
