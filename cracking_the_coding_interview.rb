@@ -1,3 +1,23 @@
+# SCREENING INTERVIEW QUESTION, FLATTEN ARBITRARILY NESTED ARRAYS
+
+def flatten(array)
+  a = []
+  array.each do |n|
+    if n.is_a? Array
+      b = flatten(n)
+      b.each { |x| a << x }
+    else
+      a << n
+    end
+  end
+  a
+end
+
+array = [3, 5, [6, 18, [4]], [[2], [8, 10]]]
+print flatten(array)
+puts ""
+
+
 # YELP INTERVIEW QUESTION: PRINT ALL UPCASE, DOWNCASE PERMUTATIONS OF STRING
 
 def upcase_downcase_perms(string)
