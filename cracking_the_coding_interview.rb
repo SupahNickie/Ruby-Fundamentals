@@ -684,7 +684,7 @@ def better_anagram_sort(array)
       hash[sorted] << string
     end
   end
-  hash.each { |k,v| puts v }
+  hash.values.flatten
 end
 
-better_anagram_sort(array)
+puts better_anagram_sort(array)
