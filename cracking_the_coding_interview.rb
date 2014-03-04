@@ -811,3 +811,69 @@ def better_anagram_sort(array)
 end
 
 puts better_anagram_sort(array)
+
+# TRAVELLING SALESMAN
+
+include Math
+
+class Map
+  attr_accessor :cities, :temp_cities
+  def initialize(cities = [], temp_cities = [])
+    @cities = cities
+    @temp_cities = temp_cities
+  end
+
+  def find_shortest_path(start, remaining)
+    return if remaining.size == 1
+    array = Array.new
+    ret = Array.new
+    @temp_cities = @temp_cities - [start]
+    hash = Hash.new
+    @temp_cities.each do |city|
+      hash[city.name] = start.distance_to_another(city)
+    end
+    shortest = hash.sort_by{|k,v| v }.first
+    index = @temp_cities.find_index {|city| city.name == shortest[0]}
+    new_start = @temp_cities[index]
+    @temp_cities.delete(index)
+    array << new_start
+    ret << shortest + [find_shortest_path(new_start, @temp_cities)]
+  end
+
+  def print_shortest_path(start, remaining)
+    ret = find_shortest_path(start, remaining)
+    puts ret.flatten[0..-2]
+  end
+
+end
+
+class City
+  attr_accessor :name, :x, :y, :map
+  def initialize(name, x, y, map)
+    @name = name
+    @x = x
+    @y = y
+    @map = map
+    @map.cities << self
+    @map.temp_cities << self
+  end
+
+  def distance_to_another(city)
+    a = (self.x - city.x).abs
+    b = (self.y - city.y).abs
+    c_squared = a**2 + b**2
+    sqrt(c_squared)
+  end
+
+end
+
+map = Map.new
+city1 = City.new("alpha", 22, 5, map)
+city2 = City.new("beta", 1, 3, map)
+city3 = City.new("gamma", 8, 0, map)
+city4 = City.new("delta", 17, 4, map)
+city5 = City.new("epsilon", 13, 8, map)
+city6 = City.new("phi", 14, 17, map)
+city7 = City.new("zeta", 7, 2, map)
+
+map.print_shortest_path(city7, map.cities)
