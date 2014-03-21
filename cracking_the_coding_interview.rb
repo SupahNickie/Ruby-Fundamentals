@@ -226,6 +226,23 @@ end
 
 replace_spaces_with_percenttwenty("I have to pewp")
 
+# SOME MORE STRING UTILITIES
+
+class String
+	def balanced?
+		counter = 0
+		self.chars.each do |char|
+			if char == "("
+				counter += 1
+			elsif char == ")"
+			  counter -= 1
+			end
+			return "Invalid closing parentheses" if counter < 0
+		end
+		counter.zero? ? "Balanced" : "Invalid amounts of opening parantheses"
+	end
+end
+
 # LINKED LISTS
 
 # 2.1, 2.2, 2.3
@@ -469,6 +486,78 @@ puts "#{leaf2} is the 2nd leaf, which is the 3rd leaf's sibling"
 tree.remove_leaf(leaf3)
 puts "#{leaf4.parent} is leaf4's new parent, which is the 2nd leaf"
 puts "#{leaf5.parent} is leaf5's new parent, which is the 2nd leaf as well"
+
+# BINARY TREE TIME!
+
+class Tree
+	attr_accessor :data, :left, :right
+	def initialize(data, left = nil, right = nil)
+		@data = data
+		@left = left
+		@right = right
+	end
+
+	def balanced?
+		hash = Hash.new
+		hash.default = 0
+		self.check_side(hash)
+		hash[:left] > hash[:right] ? "The left side has more branches than the right" : 
+		hash[:right] > hash[:left] ? "The right side has more branches than the left" : 
+		"The tree has the same amount of left and right branches"
+		# puts "#{hash[:right]} is right, #{hash[:left]} is left"
+	end
+
+	def check_side(hash)
+		if self.left && self.right
+			hash[:left] += 1
+			hash[:right] += 1
+			self.left.check_side(hash)
+			self.right.check_side(hash)
+		elsif self.left && self.right.nil?
+			hash[:left] += 1
+			self.left.check_side(hash)
+		elsif self.right && self.left.nil?
+			hash[:right] += 1
+			self.right.check_side(hash)
+		end
+	end
+
+	def same_depth?
+		hash = Hash.new
+		hash.default = 0
+		self.left.check_depth(:left, hash)
+		self.right.check_depth(:right, hash)
+		hash[:left] > hash[:right] ? "The left side has more levels of depth than the right" :
+		hash[:right] > hash[:left] ? "The right side has more levels of depth than the left" :
+		"The tree has the same level of depth on the left and right side"
+		# puts "#{hash[:right]} is right, #{hash[:left]} is left"
+	end
+
+	def check_depth(side, hash)
+		if self.left || self.right
+			hash[side] += 1
+			self.left.check_depth(side, hash) unless self.left.nil?
+			self.right.check_depth(side, hash) unless self.right.nil?
+		end
+	end
+end
+
+tree = Tree.new(17, 
+				Tree.new(12, 
+					Tree.new(6, 
+						Tree.new(3), Tree.new(8)), 
+					Tree.new(14, 
+						nil, Tree.new(13))), 
+				Tree.new(28, 
+					Tree.new(23, 
+						Tree.new(18), Tree.new(25)), 
+					Tree.new(34, 
+						Tree.new(29,
+							Tree.new(28), nil), 
+						Tree.new(30)))
+				)
+puts tree.same_depth?
+puts tree.balanced?
 
 # BIT MANIPULATION
 
