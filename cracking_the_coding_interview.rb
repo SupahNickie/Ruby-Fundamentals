@@ -1,5 +1,21 @@
 # ADDING OTHER RANDOM METHODS I THOUGHT TO TRY
 
+# INPUT: LARGE BLOB OF TEXT
+# OUTPUT: SPLIT INTO PROPER SENTENCES, REMOVING SPACES AT START OF SENTENCE, ENFORCING UPCASE
+
+def sentence_split(string)
+  string.split(/[?!\.]\s/).each do |line|
+    if line.chars.first == " "
+      line[0] = ""
+    end
+    if /[a-z]/.match(line.chars.first)
+      line[0] = line[0].upcase
+    end
+  end
+end
+
+puts sentence_split(text)
+
 def factorial(n)
   (1..n).inject { |product, n| product * n }
 end
