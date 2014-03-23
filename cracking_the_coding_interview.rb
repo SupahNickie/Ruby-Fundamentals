@@ -29,7 +29,7 @@ def alt_split(string)
   end
 end
 
-puts alt_split(text2)
+puts alt_split(text)
 
 # OUTPUT:
 
