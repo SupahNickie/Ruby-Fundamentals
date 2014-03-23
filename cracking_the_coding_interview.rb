@@ -3,6 +3,8 @@
 # INPUT: LARGE BLOB OF TEXT
 # OUTPUT: SPLIT INTO PROPER SENTENCES, REMOVING SPACES AT START OF SENTENCE, ENFORCING UPCASE
 
+text = "How did I forget to put this in the first commit? Silly me! Text is a quite important variable you know. Yep."
+
 def sentence_split(string)
   string.split(/[?!\.]\s/).each do |line|
     line[0] = "" if line.chars.first == " "
