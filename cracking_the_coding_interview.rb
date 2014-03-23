@@ -5,12 +5,8 @@
 
 def sentence_split(string)
   string.split(/[?!\.]\s/).each do |line|
-    if line.chars.first == " "
-      line[0] = ""
-    end
-    if /[a-z]/.match(line.chars.first)
-      line[0] = line[0].upcase
-    end
+    line[0] = "" if line.chars.first == " "
+    line[0] = line[0].upcase if /[a-z]/.match(line.chars.first)
   end
 end
 
