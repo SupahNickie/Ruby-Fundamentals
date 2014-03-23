@@ -3,7 +3,7 @@
 # INPUT: LARGE BLOB OF TEXT
 # OUTPUT: SPLIT INTO PROPER SENTENCES, REMOVING SPACES AT START OF SENTENCE, ENFORCING UPCASE
 
-text = "How did I forget to put this in the first commit? Silly me! Text is a quite important variable you know. Yep."
+text = "How did I forget to put this in the first commit?  Silly me! text is a quite important variable you know... Yep." # NOTE IMPROPER SPACING AND CAPITALIZATION
 
 def sentence_split(string)
   string.split(/[?!\.]\s/).each do |line|
@@ -13,6 +13,32 @@ def sentence_split(string)
 end
 
 puts sentence_split(text)
+
+# OUTPUT:
+
+# How did I forget to put this in the first commit
+# Silly me
+# Text is a quite important variable you know..
+# Yep.
+
+def alt_split(string)
+  array = string.gsub(/\.\s/, "\.\n").gsub(/\?\s/, "?\n").gsub(/!\s/, "!\n").split("\n")
+  array.each do |line|
+    line[0] = "" if line.chars.first == " "
+    line[0] = line[0].upcase if /[a-z]/.match(line.chars.first)
+  end
+end
+
+puts alt_split(text2)
+
+# OUTPUT:
+
+# How did I forget to put this in the first commit?
+# Silly me!
+# Text is a quite important variable you know...
+# Yep.
+
+# ALT SPLIT PRESERVES THE PUNCTUATION MARKS, YET STILL SOLVES THE PROBLEM
 
 def factorial(n)
   (1..n).inject { |product, n| product * n }
