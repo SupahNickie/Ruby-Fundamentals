@@ -19,9 +19,12 @@ def maximum_difference(array)
 end
 
 def check_for_overlap(array)
-  if (array.index(array.min) - array.index(array.max)).abs > 2
+  sorted = array.sort
+  if array.size < 5
+    "The maximum difference cannot be achieved without overlap"
+  elsif (array.index(array.min) - array.index(array.max)).abs > 2
     (array.min - array.max).abs
-  elsif (array.sort[0] - array.sort[1]).abs <= (array.sort[-1] - array.sort[-2]).abs
+  elsif (sorted[0] - sorted[1]).abs <= (sorted[-1] - sorted[-2]).abs
     array.delete_at(array.index(array.min))
     check_for_overlap(array)
   else
@@ -31,6 +34,7 @@ def check_for_overlap(array)
 end
 
 puts maximum_difference(array)
+
 
 # INPUT: LARGE BLOB OF TEXT
 # OUTPUT: SPLIT INTO PROPER SENTENCES, REMOVING SPACES AT START OF SENTENCE, ENFORCING UPCASE
