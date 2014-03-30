@@ -1,27 +1,33 @@
 # ADDING OTHER RANDOM METHODS I THOUGHT TO TRY
 
-# HIRED.COM CHALLENGE
-array = []
+# (ONE OF A SET OF INTERVIEW CHALLENGES FOR A JOB SERVICE)
+# CHECKS FOR SUBSEQUENCES OF 3, SUMS UP THEIR VALUES, FINDS MAXIMUM DIFFERENCE BETWEEN LOWEST
+# AND HIGHEST VALUE WITHOUT OVERLAPPING SEQUENCES
+
+array = Array.new
 50.times { array << rand(-100..100) }
 
 def maximum_difference(array)
-  left_ret = Array.new
-  right_ret = Array.new
-  left_counter = 0
-  right_counter = -1
-  until left_counter == ((array.size/2)-1)
-    left = array[left_counter..left_counter+2]
-    left_ret << left.reduce(:+)
-    left_counter += 1
+  sequences = Array.new
+  counter = 0
+  until counter == array.size-2
+    sequences << array[counter..counter+2]
+    counter += 1
   end
-  until right_counter.abs == ((array.size/2)+2)
-    right = array[right_counter-2..right_counter]
-    right_ret << right.reduce(:+)
-    right_counter -= 1
+  reductions = sequences.collect { |x| x.reduce(:+) }
+  check_for_overlap(reductions)
+end
+
+def check_for_overlap(array)
+  if (array.index(array.min) - array.index(array.max)).abs > 2
+    (array.min - array.max).abs
+  elsif (array.sort[0] - array.sort[1]).abs <= (array.sort[-1] - array.sort[-2]).abs
+    array.delete_at(array.index(array.min))
+    check_for_overlap(array)
+  else
+    array.delete_at(array.index(array.max))
+    check_for_overlap(array)
   end
-  diff1 = left_ret.max - right_ret.min
-  diff2 = right_ret.max - left_ret.min
-  [diff1, diff2].max
 end
 
 puts maximum_difference(array)
