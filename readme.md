@@ -6,9 +6,13 @@ Cracking the Coding Interview Questions
 =======================================
 Written by Gayle Laakmann, Cracking the Coding Interview (this file based on the 4th edition) presents technical interview style questions (with solutions in the back written in Java) covering the fundamentals of computer science. I began going through and answering the questions in Ruby, which are presented in this repo with somewhat descriptive method names to help those who do not have the book to see what the methods are trying to accomplish.
 
+Interview Challenges
+====================
+This repo is a collection of random sets of challenges that I've seen on Glassdoor and that companies have actually sent to me (though I do not list the company's name if it was an actual challenge sent to me).
+
 Merge Sort
 ==========
-As a TA at Code Fellows, sometimes I'm exposed to new things that we didn't cover during my original eight weeks in training there. One of those new experiences was a guest lecture from Benjamin Keller whom used an example of merge sort in class. Never content to let myself not understand a new problem fully, I dove into the code to make one for myself. The result is what taught me, with MUCH help from several sources, not only the merge sort's mechanics, but about recursion in programming as well.
+As a TA at Code Fellows, sometimes I'm exposed to new things that we didn't cover during my original eight weeks in training there. One of those new experiences was a guest lecture from Benjamin Keller whom used an example of merge sort in class. Never content to let myself not understand a new problem fully, I dove into the code to make one for myself. The result is what taught me, with MUCH help from several sources (thanks Peter Turati!), not only the merge sort's mechanics, but about recursion in programming as well.
 
 Quick Sort
 =========

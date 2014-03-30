@@ -92,7 +92,7 @@ end
 array = [3, 5, [6, 18, [4]], [[2], [8, 10]]]
 print "#{flatten(array)}\n"
 
-# YELP INTERVIEW QUESTION: PRINT ALL UPCASE, DOWNCASE PERMUTATIONS OF STRING
+# YELP INTERVIEW QUESTION FROM GLASSDOOR: PRINT ALL UPCASE, DOWNCASE PERMUTATIONS OF STRING
 
 def upcase_downcase_perms(string)
   return [string.downcase, string.upcase] if string.size == 1
@@ -106,7 +106,7 @@ end
 
 puts upcase_downcase_perms('abcdefg')
 
-# MICROSOFT INTERVIEW QUESTION: FIND EXTRA STRING
+# MICROSOFT INTERVIEW QUESTION FROM THE REQ: FIND EXTRA STRING
 
 a = ['aardvark', 'onyx', 'zebra','dog', 'cat', 'monkey']
 b = ['cat', 'dog', 'aardvark', 'zebra', 'monkey']
@@ -135,8 +135,7 @@ def age_histogram(array)
   array.sort.each do |age|
     totals[age] += 1
   end
-  print totals
-  puts ""
+  print "#{totals}\n"
 end
 
 age_histogram(array)
