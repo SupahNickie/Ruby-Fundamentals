@@ -1,5 +1,31 @@
 # ADDING OTHER RANDOM METHODS I THOUGHT TO TRY
 
+# HIRED.COM CHALLENGE
+array = []
+50.times { array << rand(-100..100) }
+
+def maximum_difference(array)
+  left_ret = Array.new
+  right_ret = Array.new
+  left_counter = 0
+  right_counter = -1
+  until left_counter == ((array.size/2)-1)
+    left = array[left_counter..left_counter+2]
+    left_ret << left.reduce(:+)
+    left_counter += 1
+  end
+  until right_counter.abs == ((array.size/2)+2)
+    right = array[right_counter-2..right_counter]
+    right_ret << right.reduce(:+)
+    right_counter -= 1
+  end
+  diff1 = left_ret.max - right_ret.min
+  diff2 = right_ret.max - left_ret.min
+  [diff1, diff2].max
+end
+
+puts maximum_difference(array)
+
 # INPUT: LARGE BLOB OF TEXT
 # OUTPUT: SPLIT INTO PROPER SENTENCES, REMOVING SPACES AT START OF SENTENCE, ENFORCING UPCASE
 
