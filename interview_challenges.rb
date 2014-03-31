@@ -251,6 +251,19 @@ puts reverse_string("Nicholas Case is the super best")
 puts reverse_string("SOYLENT GREEN IS PEOPLE!")
 puts reverse_string("I")
 
+def check_prime(n)
+  primes = [1, 2, 3, 5, 7]
+  (11..n).each do |x|
+    if (x % 2) != 0 && (x % 3) != 0 && (x % 5) != 0 && (x % 7) != 0
+      primes << x
+    end
+  end
+  print "#{primes}\n"
+  primes.include? n
+end
+
+puts check_prime(129)
+
 # TRAVELLING SALESMAN
 
 include Math
