@@ -10,6 +10,10 @@ Interview Challenges
 ====================
 This repo is a collection of random sets of challenges that I've seen on Glassdoor and that companies have actually sent to me (though I do not list the company's name if it was an actual challenge sent to me).
 
+Mars Rover/Receipt Generator
+============================
+These were a couple of challenges presented to me with the task of writing them in both Ruby and Javascript with specific directions on their inputs and outputs. A little bit of my Rubyisms were lost in the translation to Javascript because it's not so much my "native language" in programming, so some of the functionality of the Ruby files is missing (such as the ability for the exemptions to only need to contain singular versions of words and for the tax_exempt variable to show which specific items were tax exempt, rather than just true or false).
+
 Merge Sort
 ==========
 As a TA at Code Fellows, sometimes I'm exposed to new things that we didn't cover during my original eight weeks in training there. One of those new experiences was a guest lecture from Benjamin Keller whom used an example of merge sort in class. Never content to let myself not understand a new problem fully, I dove into the code to make one for myself. The result is what taught me, with MUCH help from several sources (thanks Peter Turati!), not only the merge sort's mechanics, but about recursion in programming as well.
