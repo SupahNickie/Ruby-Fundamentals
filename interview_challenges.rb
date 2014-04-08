@@ -1,3 +1,62 @@
+# EASIER MEMOIZATION TECHNIQUE, @STORAGE INITIALIZED TO SHOW LACK OF MEMOIZATION
+
+class Calculator
+  attr_accessor :memo, :storage
+  def initialize
+    @storage = Array.new
+    @memo = Hash.new
+  end
+
+  def expensive_calc_one
+    if @memo[__callee__]
+      return @memo[__callee__]
+    else
+      # Expensive calculation
+      result = 2 + 2
+      @storage << result
+      @memo[__callee__] = result
+    end
+  end
+
+  def expensive_calc_two
+    # Expensive calculation
+    result = 2 + 3
+    @storage << result
+    return result
+  end
+end
+
+calc = Calculator.new
+puts calc.memo
+puts calc.expensive_calc_one
+puts calc.expensive_calc_one
+puts calc.expensive_calc_one
+puts calc.expensive_calc_one
+puts calc.expensive_calc_one
+puts calc.memo
+puts calc.expensive_calc_two
+puts calc.expensive_calc_two
+puts calc.expensive_calc_two
+puts calc.expensive_calc_two
+puts calc.memo
+print "#{calc.storage}\n"
+
+# OUTPUT:
+
+# {}
+# 4
+# 4
+# 4
+# 4
+# 4
+# {:expensive_calc_one=>4}
+# 5
+# 5
+# 5
+# 5
+# {:expensive_calc_one=>4}
+# [4, 5, 5, 5, 5]
+
 # CHECKS FOR SUBSEQUENCES OF 3, SUMS UP THEIR VALUES, FINDS MAXIMUM DIFFERENCE BETWEEN LOWEST
 # AND HIGHEST VALUE WITHOUT OVERLAPPING SEQUENCES
 
