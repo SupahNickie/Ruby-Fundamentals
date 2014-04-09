@@ -57,6 +57,32 @@ print "#{calc.storage}\n"
 # {:expensive_calc_one=>4}
 # [4, 5, 5, 5, 5]
 
+# IMPLEMENT ROTATE METHOD TO SHIFT ELEMENTS AROUND
+
+array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+def shift(array, n)
+  temp = array.dup
+  if n == 0
+    temp
+  elsif n > 0
+    temp.push(temp[0..n-1])
+    n.times {|x| temp.delete_at(0)}
+  else # n < 0
+    temp.unshift(temp[n..-1])
+    (n..-1).each {|x| temp.delete_at(x)}
+  end
+  temp.flatten
+end
+
+print "#{shift(array, 3)}\n"
+print "#{shift(array, 2)}\n"
+print "#{shift(array, 1)}\n"
+print "#{shift(array, 0)}\n"
+print "#{shift(array, -3)}\n"
+print "#{shift(array, -2)}\n"
+print "#{shift(array, -1)}\n"
+
 # CHECKS FOR SUBSEQUENCES OF 3, SUMS UP THEIR VALUES, FINDS MAXIMUM DIFFERENCE BETWEEN LOWEST
 # AND HIGHEST VALUE WITHOUT OVERLAPPING SEQUENCES
 
