@@ -653,7 +653,7 @@ puts nth_recursive_fibonacci(20)
 MEMO = Hash.new
 
 def golf_style_memoized_fibonacci(n)
-  n < 2 ? n : MEMO.has_key?(n) ? MEMO[n] : MEMO[n] = fibonacci(n-1) + fibonacci(n-2)
+  n < 2 ? n : MEMO.has_key?(n) ? MEMO[n] : MEMO[n] = golf_style_memoized_fibonacci(n-1) + golf_style_memoized_fibonacci(n-2)
 end
 
 # 8.4
