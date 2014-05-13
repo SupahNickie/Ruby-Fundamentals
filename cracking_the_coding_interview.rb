@@ -656,6 +656,16 @@ def golf_style_memoized_fibonacci(n)
   n < 2 ? n : MEMO.has_key?(n) ? MEMO[n] : MEMO[n] = golf_style_memoized_fibonacci(n-1) + golf_style_memoized_fibonacci(n-2)
 end
 
+puts golf_style_memoized_fibonacci(5)
+puts golf_style_memoized_fibonacci(20)
+
+def best_fibonacci_ever(n)
+  n < 2 ? n : (2..n).inject([0, 1]) {|a, i| a << a[i - 1] + a[i - 2]}[n]
+end
+
+puts best_fibonacci_ever(5)
+puts best_fibonacci_ever(20)
+
 # 8.4
 
 def permutations(string)
