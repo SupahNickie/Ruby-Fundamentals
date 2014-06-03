@@ -4,11 +4,11 @@
 # 1.1
 
 def unique_string(string)
-  puts string.chars.uniq == string.chars ? "unique" : "not unique"
+  string.chars.uniq == string.chars ? "unique" : "not unique"
 end
 
-unique_string("ice")
-unique_string("poo")
+print "#{unique_string('ice')}\n"
+print "#{unique_string('poo')}\n"
 
 # 1.2
 
@@ -23,10 +23,10 @@ reverse_c_string("qwer")
 # 1.3
 
 def remove_duplicate_chars(string)
-  puts string.chars.uniq!.join
+  string.chars.uniq!.join
 end
 
-remove_duplicate_chars("neubie")
+print "#{remove_duplicate_chars('neubie')}\n"
 
 # 1.4
 
@@ -34,15 +34,15 @@ def anagrams(a, b)
   a.each_with_index { |word, index| puts a[index].chars.sort == b[index].chars.sort ? "1" : "0" }
 end
 
-anagrams(["iceman", "carebear", "tuesq"], ["cinema", "subpoena", "quest"])
+anagrams(['iceman', 'carebear', 'tuesq'], ['cinema', 'subpoena', 'quest'])
 
 # 1.5
 
 def replace_spaces_with_percenttwenty(string)
-  puts string.gsub(" ", "%20")
+  string.gsub(" ", "%20")
 end
 
-replace_spaces_with_percenttwenty("I have to pewp")
+print "#{replace_spaces_with_percenttwenty('I have to pewp')}\n"
 
 # SOME MORE STRING UTILITIES
 
@@ -291,12 +291,9 @@ tree.root.children.each { |x| root_children << x.data }
 leaf4.siblings.each { |x| leaf4_siblings << x.data }
 leaf2.children.each { |x| leaf2_children << x.data }
 tree.find_leaf(13)
-print root_children
-puts ""
-print leaf4_siblings
-puts ""
-print leaf2_children
-puts ""
+print "#{root_children}\n"
+print "#{leaf4_siblings}\n"
+print "#{leaf2_children}\n"
 tree.remove_leaf(leaf)
 puts "#{tree.root} is the tree's root"
 puts "#{leaf3} is the 3rd leaf"
@@ -395,10 +392,10 @@ puts tree.balanced?
 def number_substring_madness(n, m, pos1, pos2)
   new_n = n.to_s.chars
   new_n[pos1, pos2] = m.to_s.chars
-  puts new_n.join
+  new_n.join
 end
 
-number_substring_madness(999_999_999, 3434, 2, 6)
+print "#{number_substring_madness(999_999_999, 3434, 2, 6)}\n"
 
 # 5.6
 
@@ -409,10 +406,10 @@ def swap_even_odds(int)
       array[index], array[index + 1] = array[index + 1], array[index]
     end
   end
-  puts array.join
+  array.join
 end
 
-swap_even_odds(4234052123450)
+print "#{swap_even_odds(4234052123450)}\n"
 
 # BRAIN TEASERS
 
@@ -685,7 +682,21 @@ puts permutations("cute")
 
 # 9.1
 
-def two_sorted(a, b)
+def two_sorted_a(a, b)
+  counter = 0
+  until b.empty?
+    if b.first > a.last
+      a.insert(-1, b.dup)
+      b.clear
+    else
+      a.insert(counter, b.shift) if a[counter] > b.first
+      counter += 1
+    end
+  end
+  a.flatten!
+end
+
+def two_sorted_b(a, b)
   a.each_with_index do |num, index|
     unless b.empty?
       if b.first < num
@@ -698,8 +709,8 @@ def two_sorted(a, b)
   return a
 end
 
-print two_sorted([4, 10, 13, 24], [5, 16, 90])
-puts ""
+print "#{two_sorted_a([4, 10, 13, 24], [5, 16, 90])}\n"
+print "#{two_sorted_b([4, 10, 13, 24], [5, 16, 90])}\n"
 
 # 9.2
 
