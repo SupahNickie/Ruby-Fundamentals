@@ -51,8 +51,7 @@ class LinkedListStack
   def pop
     old_top = @top
     @top = old_top.pointer_behind
-    @top.pointer_ahead = nil
-    old_top.pointer_ahead = nil && old_top.pointer_behind = nil
+    @top.pointer_ahead = nil; old_top.pointer_ahead = nil; old_top.pointer_behind = nil
     old_top.data
   end
 
