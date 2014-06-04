@@ -1,3 +1,16 @@
+# EMAIL REGEXP
+
+email_regexp = /[a-zA-Z1-9_\.]*@[a-zA-Z1-9]*\.(org|net|co(m|\.[a-z]{2}))/
+
+def valid_email?(email_array, email_regexp)
+  email_array.each do |email|
+    puts "#{email} matched the regexp!" if email_regexp.match(email)
+  end
+end
+
+array = ["asdfasdf_23r.caaqwe@asdflkj.com", "oipjqew380__q3..32@asd24.co.uk", "oqiu3cxva@bewo.net"]
+valid_email?(array)
+
 # EASIER MEMOIZATION TECHNIQUE, @STORAGE INITIALIZED TO SHOW LACK OF MEMOIZATION
 
 class Calculator
