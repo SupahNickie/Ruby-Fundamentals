@@ -920,4 +920,14 @@ def better_anagram_sort(array)
   hash.values.flatten
 end
 
-puts better_anagram_sort(array)
+print "#{better_anagram_sort(array)}\n"
+
+# CLEANER IMPLEMENTATION
+
+def best_anagram_sort(array)
+  hash = Hash.new { |hash, key| hash[key] = [] }
+  array.each { |string| hash[string.chars.sort.join.to_sym] << string }
+  hash.values.flatten
+end
+
+print "#{best_anagram_sort(array)}\n"
