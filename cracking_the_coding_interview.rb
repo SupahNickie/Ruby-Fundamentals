@@ -481,6 +481,27 @@ class BinaryTree
     [@left, @right].compact
   end
 
+  def pre_order(array = [])
+    array << @data
+    @left.pre_order(array) unless @left.nil?
+    @right.pre_order(array) unless @right.nil?
+    array
+  end
+
+  def in_order(array = [])
+    @left.in_order(array) unless @left.nil?
+    array << @data
+    @right.in_order(array) unless @right.nil?
+    array
+  end
+
+  def post_order(array = [])
+    @left.post_order(array) unless @left.nil?
+    @right.post_order(array) unless @right.nil?
+    array << @data
+    array
+  end
+
   def balanced?
     hash = Hash.new
     hash.default = 0
@@ -549,6 +570,9 @@ tree = BinaryTree.new(17,
 # The tree is deeper on the right side, yet has the same amount of left and right "branches"
 puts tree.same_depth?
 puts tree.balanced?
+print "#{tree.pre_order}\n"
+print "#{tree.in_order}\n"
+print "#{tree.post_order}\n"
 
 # BIT MANIPULATION
 
