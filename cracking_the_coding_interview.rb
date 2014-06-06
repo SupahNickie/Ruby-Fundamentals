@@ -231,10 +231,10 @@ end
 
 stack = ArrayStack.new(4)
 print "#{stack.values} is the stack's first set of values\n"
-stack.add(5)
+stack.push(5)
 print "#{stack.values} is the stack's second set of values\n"
 print "#{stack.top} should return 5\n"
-stack.add(6)
+stack.push(6)
 print "#{stack.values} is the stack's third set of values\n"
 print "#{stack.top} should return 6\n"
 print "#{stack.pop} should return the number 6 and delete it afterward\n"
@@ -502,6 +502,17 @@ class BinaryTree
     array
   end
 
+  def breadth_first(array = [], queue = [])
+    queue << self
+    until queue.empty?
+      searching = queue.shift
+      array << searching.data
+      queue << searching.left unless searching.left.nil?
+      queue << searching.right unless searching.right.nil?
+    end
+    array
+  end
+
   def balanced?
     hash = Hash.new
     hash.default = 0
@@ -573,6 +584,7 @@ puts tree.balanced?
 print "#{tree.pre_order}\n"
 print "#{tree.in_order}\n"
 print "#{tree.post_order}\n"
+print "#{tree.breadth_first}\n"
 
 # BIT MANIPULATION
 
