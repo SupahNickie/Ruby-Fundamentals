@@ -1,6 +1,6 @@
 # FUNDAMENTALS OF RUBY
 
-This repository originally started off as an assignment through Code Fellows to test our Ruby technical skills with the Fizzbuzz program, to which our challenge was to extend it to take any case. However, after graduation from the Ruby on Rails program, I'm going to be using this repository as a playground to challenge my own Ruby programming skills with challenges that I can think up or need to have written myself in order to practice data structures and algorithms. This will definitely be a mishmash of Ruby programs thrown in here!
+This repository is a collection of all the accumulated academic topics in Computer Science that I've encountered and adapted for use in Ruby. It's funny how far you end up going after figuring out how to write your first "Fizzbuzz".
 
 ### Interview Challenges
 
