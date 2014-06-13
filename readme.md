@@ -8,23 +8,23 @@ Written by Gayle Laakmann, Cracking the Coding Interview (this file based on the
 
 Interview Challenges
 ====================
-This repo is a collection of random sets of challenges that I've seen on Glassdoor and that companies have actually sent to me (though I do not list the company's name if it was an actual challenge sent to me).
+This repo is a collection of random sets of challenges that I've seen on Glassdoor and that companies have actually sent to me (though I do not list the company's name if it was a challenge sent to me).
 
 Mars Rover/Receipt Generator
 ============================
 These were a couple of challenges presented to me with the task of writing them in both Ruby and Javascript with specific directions on their inputs and outputs. A little bit of my Rubyisms were lost in the translation to Javascript because it's not so much my "native language" in programming, so some of the functionality of the Ruby files is missing (such as the ability for the exemptions to only need to contain singular versions of words and for the tax_exempt variable to show which specific items were tax exempt, rather than just true or false).
 
-Merge Sort
-==========
-As a TA at Code Fellows, sometimes I'm exposed to new things that we didn't cover during my original eight weeks in training there. One of those new experiences was a guest lecture from Benjamin Keller whom used an example of merge sort in class. Never content to let myself not understand a new problem fully, I dove into the code to make one for myself. The result is what taught me, with MUCH help from several sources (thanks Peter Turati!), not only the merge sort's mechanics, but about recursion in programming as well.
+Sorting Algorithms
+==================
+As a TA at Code Fellows, sometimes I'm exposed to new things that we didn't cover during my original eight weeks in training there. One of those new experiences was a guest lecture from Benjamin Keller whom used an example of Mergesort in class. Never content to let myself not understand a new problem fully, I dove into the code to make one for myself. The result is what taught me, with MUCH help from several sources (thanks Peter Turati!), not only the Mergesort's mechanics, but about recursion in programming as well. Once I figured out the Mergesort algorithm, I asked Brook for another challenge and he presented me with Quicksort, saying that it was difficult to explain even in a couple sentences exactly how it works. After a couple videos on YouTube that explained the concept, the code wasn't too difficult to pick up on and here I present my Ruby-centric version of Quicksort. Later in my teaching career, I was asked to present a week of just doing sorting algorithms, so I decided to include Insertion sort despite its limited usage and a least significant digit version of Radix sort, a wholly non-comparative sort.
 
-Quick Sort
-=========
-Once I figured out the Merge sort algorithm, I asked Brook for another challenge and he presented me with Quick sort, saying that it was difficult to explain even in a couple sentences exactly how it works. After a couple videos on YouTube that explained the concept, the code wasn't too difficult to pick up on and here I present my Ruby-centric version of Quick sort.
+Data Structures
+===============
+Ruby versions of the main data structures to be expected out in the wild: Binary Trees, N-ary Trees, (Doubly) Linked Lists, Stacks (with Array and Linked List implementations), and Queues (also with Array and Linked List implementations). Each of the data structures also has commonly asked for algorithms such as tree traversal, node deletion, and depth checking.
 
 Dictionary
 ==========
-The idea for this challenge was from a guest talk we had at Code Fellows when one of the engineers that spoke to us said a program version of a dictionary is a very common technical interview question, so I decided to run with it. I originally thought of making it object-oriented, with a class of Word that was initialized, but realized not too long after that I didn't actually need to instantiate a word at all, being able to handle all functionality in just two global methods, with the third simply allowing an infinite loop until the user types "exit".
+The idea for this challenge was from a guest talk we had at Code Fellows when one of the engineers that spoke to us said a program version of a dictionary is a very common technical interview question, so I decided to run with it. I originally thought of making it object-oriented, with a class of Word that was initialized, but realized not too long after that I didn't actually need to instantiate a word at all, being able to handle all functionality in just two global methods, with the third simply allowing an infinite loop until the user types "exit". However, never content to let sleeping dogs lie, I went back later and made it object-oriented anyway.
 
 The Fizzbuzz Challenge
 ======================
@@ -38,4 +38,4 @@ LIMITATIONS OF FIZZBUZZ v 1.0
 
 FIZZBUZZ v 2.0
 
-hardcorefizzbuzz.rb and ranged_hardcorefizzbuzz solve both of those major issues. In it an easily managed list of divisors is used in a "check divisors" method used to iterate over a splat argument for the main method itself, allowing a check of any amount of numbers to check division against as well as an easy way to add in any divisors the user would want. While some small amount of coding is required to add in any divisors, even the most novice of programmers could extrapolate how to add in a divisor and its associated return key in the first line of the FizzBuzz code.
+Hardcore Fizzbuzz and the ranged version solve both of those major issues. In it an easily managed list of divisors is used in a "check divisors" method used to iterate over a splat argument for the main method itself, allowing a check of any amount of numbers to check division against as well as an easy way to add in any divisors the user would want. While some small amount of coding is required to add in any divisors, even the most novice of programmers could extrapolate how to add in a divisor and its associated return key in the first line of the FizzBuzz code.
