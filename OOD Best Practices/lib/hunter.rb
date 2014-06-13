@@ -41,6 +41,4 @@ private
       when "pistol" then instance_variable_set("@attack_power", 170)
     end
   end
-
-
 end

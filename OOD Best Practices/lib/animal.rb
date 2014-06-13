@@ -1,7 +1,6 @@
 include Initializer
 
 class Animal
-
   def attack(victim)
     victim.defend(self)
   end
@@ -35,5 +34,4 @@ private
     @position_x += rand(-5..5)
     @position_y += rand(-5..5)
   end
-
 end

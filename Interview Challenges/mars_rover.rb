@@ -67,7 +67,6 @@ class Rover
       @heading = "N"
     end
   end
-
 end
 
 map = Map.new("5 5")

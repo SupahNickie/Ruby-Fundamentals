@@ -230,10 +230,8 @@ array = Array.new
 
 def age_histogram(array)
   totals = Array.new(131, 0)
-  array.sort.each do |age|
-    totals[age] += 1
-  end
-  print "#{totals}\n"
+  array.sort.each { |age| totals[age] += 1 }
+  puts totals.inspect
 end
 
 age_histogram(array)
@@ -394,7 +392,6 @@ class Map
     ret = find_shortest_path(start, remaining)
     puts ret.flatten[0..-2]
   end
-
 end
 
 class City
@@ -414,7 +411,6 @@ class City
     c_squared = a**2 + b**2
     sqrt(c_squared)
   end
-
 end
 
 map = Map.new
