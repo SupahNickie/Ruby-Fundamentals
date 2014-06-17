@@ -156,9 +156,9 @@ puts sentence_split(text)
 # ALT SPLIT PRESERVES THE PUNCTUATION MARKS, YET STILL SOLVES THE PROBLEM
 
 def alt_split(string)
-  array = string.gsub(/\.\s/, "\.\n").gsub(/\?\s/, "?\n").gsub(/!\s/, "!\n").split("\n")
+  array = string.gsub(/([!\?\.]\s)/, '\1\n').split(" \\n")
   array.each do |line|
-    line[0] = "" if line.chars.first == " "
+    line[0] = "" while line.chars.first == " "
     line[0] = line[0].upcase if /[a-z]/.match(line.chars.first)
   end
 end
