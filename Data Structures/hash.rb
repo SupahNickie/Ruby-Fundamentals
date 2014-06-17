@@ -29,11 +29,11 @@ end
 my_hash = MyHash.new(6) # Ensure a collision to show handling
 my_hash.set("cute", 32)
 puts my_hash.pairs.inspect
+my_hash.set("garwr", 37)
+puts my_hash.pairs.inspect
+my_hash.set("gwrar", "asdfasdf")
+puts my_hash.pairs.inspect
 my_hash.set("grawr", 39)
-puts my_hash.pairs.inspect
-my_hash.set("grawr", 37)
-puts my_hash.pairs.inspect
-my_hash.set("grawr", "asdfasdf")
 puts my_hash.pairs.inspect
 my_hash.set("grawr", Array.new )
 puts my_hash.pairs.inspect
