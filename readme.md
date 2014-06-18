@@ -38,7 +38,7 @@ Hardcore Fizzbuzz and the ranged version solve both of those major issues. In it
 
 ##### Data Structures
 
-Ruby versions of the main data structures to be expected out in the wild: Binary Trees, N-ary Trees, (Doubly) Linked Lists, a naive implementation of a Hash table, Stacks (with Array and Linked List implementations), and Queues (also with Array and Linked List implementations). Each of the data structures also has commonly asked for algorithms such as tree traversal, node deletion, and depth checking.
+Ruby versions of the main data structures to be expected out in the wild: Binary Trees, an optimized Binary Search Tree, N-ary Trees, (Doubly) Linked Lists, a naive implementation of a Hash table, Stacks (with Array and Linked List implementations), and Queues (also with Array and Linked List implementations). Each of the data structures also has commonly asked for algorithms such as tree traversal, node deletion, and depth checking.
 
 ##### Sorting Algorithms
 
