@@ -40,6 +40,38 @@ class BinarySearchTree
     right = 1 + traverse_down(node.right) if node.right
     result = left - right
   end
+
+  def pre_order(node = @root, array = [])
+    array << node.value
+    pre_order(node.left, array) unless node.left.nil?
+    pre_order(node.right, array) unless node.right.nil?
+    array
+  end
+
+  def in_order(node = @root, array = [])
+    in_order(node.left, array) unless node.left.nil?
+    array << node.value
+    in_order(node.right, array) unless node.right.nil?
+    array
+  end
+
+  def post_order(node = @root, array = [])
+    post_order(node.left, array) unless node.left.nil?
+    post_order(node.right, array) unless node.right.nil?
+    array << node.value
+    array
+  end
+
+  def breadth_first(node = @root, array = [], queue = [])
+    queue << node
+    until queue.empty?
+      searching = queue.shift
+      array << searching.value
+      queue << searching.left unless searching.left.nil?
+      queue << searching.right unless searching.right.nil?
+    end
+    array
+  end
 end
 
 class Node
@@ -86,3 +118,7 @@ puts tree.contains?(7)
 puts tree.size
 puts tree.depth
 puts tree.balance
+puts tree.pre_order.inspect
+puts tree.in_order.inspect
+puts tree.post_order.inspect
+puts tree.breadth_first.inspect
