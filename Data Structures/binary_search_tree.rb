@@ -5,7 +5,7 @@ class BinarySearchTree
   end
 
   def rebalance
-    array_of_nodes, middle_node = order_nodes_for_rebalance[0], order_nodes_for_rebalance[1]
+    array_of_nodes, middle_node = order_nodes_for_rebalance
     array_of_nodes.each { |x| delete(x.value) unless x == @root }
     @root = nil
     insert(Node.new(middle_node.value))
