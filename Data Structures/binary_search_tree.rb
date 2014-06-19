@@ -36,7 +36,7 @@ class BinarySearchTree
   end
 
   def depth(node = @root)
-    return 0 if node.children.empty?
+    return 1 if node.children.empty?
     node.children.collect { |x| 1 + depth(x) }.max
   end
 

@@ -85,7 +85,7 @@ class BinaryTree
   end
 
   def height
-    return 0 if self.child_nodes.empty?
+    return 1 if self.child_nodes.empty?
     self.child_nodes.collect {|n| n.height + 1}.max
   end
 end
