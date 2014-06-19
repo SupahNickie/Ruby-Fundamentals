@@ -116,7 +116,7 @@ private
   def order_nodes_for_rebalance(node = @root, array = [])
     order_nodes_for_rebalance(node.left, array) unless node.left.nil?
     array << node
-    in_order(node.right, array) unless node.right.nil?
+    order_nodes_for_rebalance(node.right, array) unless node.right.nil?
     return [array, array[array.size/2]]
   end
 
