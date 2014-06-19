@@ -4,6 +4,15 @@ class BinarySearchTree
     @root = root
   end
 
+  def rebalance
+    array_of_nodes, middle_node = order_nodes_for_rebalance[0], order_nodes_for_rebalance[1]
+    array_of_nodes.each { |x| delete(x.value) unless x == @root }
+    @root = nil
+    insert(Node.new(middle_node.value))
+    array_of_nodes.each { |x| insert(Node.new(x.value)) }
+    array_of_nodes.clear
+  end
+
   def insert(insert_node, node = @root)
     if @root.nil?
       @root = insert_node
@@ -85,21 +94,31 @@ class BinarySearchTree
       node_to_delete = array[0]
       if node_to_delete.children.empty?
         node_to_delete == node_to_delete.parent.left ? node_to_delete.parent.left = nil : node_to_delete.parent.right = nil
+        node_to_delete.parent, node_to_delete.left, node_to_delete.right = nil, nil, nil
       elsif node_to_delete.children.size == 1
         child_node = node_to_delete.children[0]
         node_to_delete == node_to_delete.parent.left ? node_to_delete.parent.left = child_node : node_to_delete.parent.right = child_node
         child_node.parent = node_to_delete.parent
+        node_to_delete.parent, node_to_delete.left, node_to_delete.right = nil, nil, nil
       elsif node_to_delete.children.size == 2
         child_node = node_to_delete.children[0]
         child_node_2 = node_to_delete.children[1]
         node_to_delete == node_to_delete.parent.left ? node_to_delete.parent.left = child_node : node_to_delete.parent.right = child_node
         child_node.right = child_node_2
         child_node_2.parent = child_node
+        node_to_delete.parent, node_to_delete.left, node_to_delete.right = nil, nil, nil
       end
     end
   end
 
 private
+
+  def order_nodes_for_rebalance(node = @root, array = [])
+    order_nodes_for_rebalance(node.left, array) unless node.left.nil?
+    array << node
+    in_order(node.right, array) unless node.right.nil?
+    return [array, array[array.size/2]]
+  end
 
   def traverse_for_deletion(value, node, array)
     if node.value == value
@@ -177,3 +196,11 @@ puts tree.in_order.inspect
 puts tree.post_order.inspect
 puts tree.breadth_first.inspect
 puts "#{tree.size} IS THE TREE'S SIZE"
+tree.rebalance
+puts tree.pre_order.inspect
+puts tree.root.value
+puts tree.root.left.value
+puts tree.root.right.value
+puts tree.root.left.right.value
+puts tree.root.left.right.right.value
+puts tree.root.right.right.value
