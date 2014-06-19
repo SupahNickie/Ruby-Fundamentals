@@ -8,9 +8,18 @@ class BinarySearchTree
     array_of_nodes, middle_node = order_nodes_for_rebalance
     array_of_nodes.each { |x| delete(x.value) unless x == @root }
     @root = nil
+    array_of_values = array_of_nodes.collect(&:value)
     insert(Node.new(middle_node.value))
-    array_of_nodes.each { |x| insert(Node.new(x.value)) }
-    array_of_nodes.clear
+    second_array = array_of_values.slice!((array_of_values.size/2), array_of_values.size - 1)
+    until array_of_values.empty? || (array_of_values.size == 1 && array_of_values[0] == @root.value)
+      node_to_insert = array_of_values.delete_at(array_of_values.size/2)
+      insert(Node.new(node_to_insert))
+    end
+    until second_array.empty? || (second_array.size == 1 && second_array[0] == @root.value)
+      node_to_insert = second_array.delete_at(second_array.size/2)
+      insert(Node.new(node_to_insert))
+    end
+    array_of_nodes.clear; array_of_values.clear; second_array.clear
   end
 
   def insert(insert_node, node = @root)
@@ -198,9 +207,12 @@ puts tree.breadth_first.inspect
 puts "#{tree.size} IS THE TREE'S SIZE"
 tree.rebalance
 puts tree.pre_order.inspect
+puts tree.in_order.inspect
+puts tree.post_order.inspect
+puts tree.breadth_first.inspect
 puts tree.root.value
 puts tree.root.left.value
 puts tree.root.right.value
+puts tree.root.left.left.value
 puts tree.root.left.right.value
-puts tree.root.left.right.right.value
 puts tree.root.right.right.value
