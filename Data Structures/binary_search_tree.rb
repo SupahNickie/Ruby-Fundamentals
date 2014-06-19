@@ -4,30 +4,35 @@ class BinarySearchTree
     @root = root
   end
 
-  def insert(node = @root, insert_node)
+  def insert(insert_node, node = @root)
     if @root.nil?
       @root = insert_node
     elsif insert_node.value < node.value
-      node.left.nil? ? node.left = insert_node : insert(node.left, insert_node)
+      if node.left.nil?
+        node.left = insert_node
+        insert_node.parent = node
+      else
+        insert(insert_node, node.left)
+      end
     elsif insert_node.value > node.value
-      node.right.nil? ? node.right = insert_node : insert(node.right, insert_node)
+      if node.right.nil?
+        node.right = insert_node
+        insert_node.parent = node
+      else
+        insert(insert_node, node.right)
+      end
     elsif contains?(insert_node.value)
       puts "The value #{insert_node.value} is already present in the tree"
     end
   end
 
-  def contains?(node = @root, value)
-    node.value == value ? true : node.children.each { |x| contains(x, value) }
+  def contains?(value, node = @root)
+    breadth_first.include?(value) ? true : false
   end
 
   def size(node = @root)
     return "No elements in tree" if @root.nil?
     counter = 1 + traverse_down(node)
-  end
-
-  def traverse_down(node)
-    return 0 if node.children.empty?
-    node.children.collect { |x| 1 + traverse_down(x) }.reduce(:+)
   end
 
   def depth(node = @root)
@@ -39,47 +44,85 @@ class BinarySearchTree
     left = 1 + traverse_down(node.left) if node.left
     right = 1 + traverse_down(node.right) if node.right
     result = left - right
+    result < 0 ? "The tree is right heavy by #{result.abs} elements" : result > 0 ? "The tree is left heavy by #{result.abs} elements" : "The tree is ideally balanced"
   end
 
   def pre_order(node = @root, array = [])
-    array << node.value
+    array << node
     pre_order(node.left, array) unless node.left.nil?
     pre_order(node.right, array) unless node.right.nil?
-    array
+    array.collect { |x| x.value }
   end
 
   def in_order(node = @root, array = [])
     in_order(node.left, array) unless node.left.nil?
-    array << node.value
+    array << node
     in_order(node.right, array) unless node.right.nil?
-    array
+    array.collect { |x| x.value }
   end
 
   def post_order(node = @root, array = [])
     post_order(node.left, array) unless node.left.nil?
     post_order(node.right, array) unless node.right.nil?
-    array << node.value
-    array
+    array << node
+    array.collect { |x| x.value }
   end
 
   def breadth_first(node = @root, array = [], queue = [])
     queue << node
     until queue.empty?
       searching = queue.shift
-      array << searching.value
+      array << searching
       queue << searching.left unless searching.left.nil?
       queue << searching.right unless searching.right.nil?
     end
-    array
+    array.collect { |x| x.value }
+  end
+
+  def delete(value, node = @root, array = [])
+    if contains?(value)
+      traverse_for_deletion(value, node, array)
+      node_to_delete = array[0]
+      if node_to_delete.children.empty?
+        node_to_delete == node_to_delete.parent.left ? node_to_delete.parent.left = nil : node_to_delete.parent.right = nil
+      elsif node_to_delete.children.size == 1
+        child_node = node_to_delete.children[0]
+        node_to_delete == node_to_delete.parent.left ? node_to_delete.parent.left = child_node : node_to_delete.parent.right = child_node
+        child_node.parent = node_to_delete.parent
+      elsif node_to_delete.children.size == 2
+        child_node = node_to_delete.children[0]
+        child_node_2 = node_to_delete.children[1]
+        node_to_delete == node_to_delete.parent.left ? node_to_delete.parent.left = child_node : node_to_delete.parent.right = child_node
+        child_node.right = child_node_2
+        child_node_2.parent = child_node
+      end
+    end
+  end
+
+private
+
+  def traverse_for_deletion(value, node, array)
+    if node.value == value
+      array << node
+    else
+      traverse_for_deletion(value, node.left, array) unless node.left.nil?
+      traverse_for_deletion(value, node.right, array) unless node.right.nil?
+    end
+  end
+
+  def traverse_down(node)
+    return 0 if node.children.empty?
+    node.children.collect { |x| 1 + traverse_down(x) }.reduce(:+)
   end
 end
 
 class Node
-  attr_accessor :value, :left, :right
-  def initialize(value, left = nil, right = nil)
+  attr_accessor :value, :left, :right, :parent
+  def initialize(value, left = nil, right = nil, parent = nil)
     @value = value
     @left = left
     @right = right
+    @parent = parent
   end
 
   def children
@@ -114,11 +157,23 @@ puts tree.root.right.left.value
 puts tree.root.right.left.left.value
 puts tree.root.left.right.value
 puts tree.root.left.left.value
-puts tree.contains?(7)
-puts tree.size
+puts "DOES THE TREE CONTAIN 7? #{tree.contains?(7)}"
+puts "DOES THE TREE CONTAIN 32? #{tree.contains?(32)}"
+puts "DOES THE TREE CONTAIN 97? #{tree.contains?(97)}"
+puts "#{tree.size} IS THE TREE'S SIZE"
 puts tree.depth
 puts tree.balance
 puts tree.pre_order.inspect
 puts tree.in_order.inspect
 puts tree.post_order.inspect
 puts tree.breadth_first.inspect
+tree.delete(16)
+puts "DOES THE TREE CONTAIN 16? #{tree.contains?(16)}"
+puts tree.pre_order.inspect
+tree.delete(3)
+puts "DOES THE TREE CONTAIN 3? #{tree.contains?(3)}"
+puts tree.pre_order.inspect
+puts tree.in_order.inspect
+puts tree.post_order.inspect
+puts tree.breadth_first.inspect
+puts "#{tree.size} IS THE TREE'S SIZE"
