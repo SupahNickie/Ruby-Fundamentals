@@ -21,14 +21,11 @@ class Calculator
   end
 
   def expensive_calc_one
-    if @memo[__callee__]
-      return @memo[__callee__]
-    else
-      # Expensive calculation
-      result = 2 + 2
-      @storage << result
-      @memo[__callee__] = result
-    end
+    return @memo[__callee__] if @memo[__callee__]
+    # If no return, it runs the expensive calculation
+    result = 2 + 2
+    @storage << result
+    @memo[__callee__] = result
   end
 
   def expensive_calc_two
