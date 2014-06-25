@@ -187,6 +187,33 @@ end
 array = [3, 5, [6, 18, [4]], [[2], [8, 10]]]
 print "#{flatten(array)}\n"
 
+# LESS READABLE, BUT (ALMOST) ONE LINER OF THE SAME METHOD
+
+def one_line_flatten(array, ret = [])
+  array.each { |x| x.is_a?(Array) ? one_line_flatten(x, ret) : ret << x }; ret
+end
+
+# CLASS EXTENSIONS OF THE SAME METHODS
+
+class Array
+  def my_flatten
+    a = []
+    self.each do |n|
+      if n.is_a? Array
+        b = n.my_flatten
+        b.each { |x| a << x }
+      else
+        a << n
+      end
+    end
+    a
+  end
+
+  def one_line_my_flatten(ret = [])
+    self.each { |x| x.is_a?(Array) ? x.one_line_my_flatten(ret) : ret << x }; ret
+  end
+end
+
 # YELP INTERVIEW QUESTION FROM GLASSDOOR: PRINT ALL UPCASE, DOWNCASE PERMUTATIONS OF STRING
 
 def upcase_downcase_perms(string)
