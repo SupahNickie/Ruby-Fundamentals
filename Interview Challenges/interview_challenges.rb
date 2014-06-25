@@ -34,6 +34,15 @@ class Calculator
     @storage << result
     return result
   end
+
+  def expensive_calc_three
+    # Another way to memoize with different syntax
+    @memo[__callee__] ||=
+    begin
+      # Expensive calculation with no explicit return
+      3 + 3
+    end
+  end
 end
 
 calc = Calculator.new
@@ -48,6 +57,8 @@ puts calc.expensive_calc_two
 puts calc.expensive_calc_two
 puts calc.expensive_calc_two
 puts calc.expensive_calc_two
+puts calc.memo
+puts calc.expensive_calc_three
 puts calc.memo
 print "#{calc.storage}\n"
 
@@ -65,7 +76,10 @@ print "#{calc.storage}\n"
 # 5
 # 5
 # {:expensive_calc_one=>4}
+# 6
+# {:expensive_calc_one=>4, :expensive_calc_three=>6}
 # [4, 5, 5, 5, 5]
+
 
 # IMPLEMENT ROTATE METHOD TO SHIFT ELEMENTS AROUND
 
