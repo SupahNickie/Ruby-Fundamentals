@@ -1,6 +1,6 @@
 # EMAIL REGEXP
 
-email_regexp = /[a-zA-Z1-9_\.]*@[a-zA-Z1-9]*\.(org|net|co(m|\.[a-z]{2}))/
+email_regexp = /[a-zA-Z0-9_\.]*@[a-zA-Z0-9]*\.(org|net|co(m|\.[a-z]{2}))/
 
 def valid_email?(email_array, email_regexp)
   email_array.each do |email|
